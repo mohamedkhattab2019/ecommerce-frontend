@@ -12,32 +12,38 @@
         <nav class="flex space-x-6">
           <router-link
             to="/categories"
-            class="hover:text-tertiary"
+            class="hover:text-tertiary tab-bar border-0"
             :class="{ 'text-tertiary': $route.name === 'Categories' }"
           >
-            Categories
+            تسوق
           </router-link>
-
+          <router-link
+            to="/orders"
+            class="hover:text-tertiary tab-bar"
+            :class="{ 'text-tertiary': $route.name === 'User Orders' }"
+          >
+           طلباتي
+          </router-link>
           <router-link
             to="/admin/categories"
-            class="hover:text-tertiary"
+            class=" hover:text-tertiary tab-bar"
             :class="{ 'text-tertiary': $route.name === 'Admin Categories' }"
           >
-          Admin Categories
+          اضافة تصنيفات
           </router-link>
         </nav>
 
         <!-- Cart -->
         <div>
           <router-link to="/cart">
-            <button class="relative bg-accent text-white px-4 py-2 rounded-md">
-              Cart
+            <button class="relative bg-accent text-white px-4 py-2 rounded-md rtl">
               <span
-                v-if="cartCount > 0"
+                v-if="cartCount >= 0"
                 class="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 bg-red-500 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center"
               >
                 {{ cartCount }}
               </span>
+              عربة التسوق
             </button>
           </router-link>
         </div>
@@ -92,3 +98,12 @@ export default {
   },
 };
 </script>
+<style>
+.tab-bar {
+  border-left: 0.5px solid gray;
+  display: inline-block;
+  height: 25px; 
+  padding: 0 10px 0 10px;
+}
+
+</style>

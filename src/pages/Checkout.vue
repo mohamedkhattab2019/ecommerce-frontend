@@ -10,19 +10,19 @@
           <div>
             <label for="address" class="block text-gray-700">Address</label>
             <input v-model="shipping.address" type="text" id="address" required
-              class="w-full border rounded px-3 py-2" />
+              class="w-full border rounded px-3 py-2 text-black" />
           </div>
           <div>
             <label for="city" class="block text-gray-700">City</label>
-            <input v-model="shipping.city" type="text" id="city" required class="w-full border rounded px-3 py-2" />
+            <input v-model="shipping.city" type="text" id="city" required class="w-full border rounded px-3 py-2 text-black" />
           </div>
           <div>
             <label for="zip" class="block text-gray-700">Zip Code</label>
-            <input v-model="shipping.zip_code" type="text" id="zip" required class="w-full border rounded px-3 py-2" />
+            <input v-model="shipping.zip_code" type="text" id="zip" required class="w-full border rounded px-3 py-2 text-black" />
           </div>
           <div>
             <label for="phone" class="block text-gray-700">Phone</label>
-            <input v-model="shipping.phone" type="text" id="phone" required class="w-full border rounded px-3 py-2" />
+            <input v-model="shipping.phone" type="text" id="phone" required class="w-full border rounded px-3 py-2 text-black" />
           </div>
         </div>
       </div>
@@ -31,9 +31,9 @@
         <h2 class="text-xl font-bold text-gray-700">Payment Details</h2>
         <div class="my-6 text-tertiary flex-1 flex gap-4  content-center text-center">
           <p class="text-xl font-bold text-tertiary">Summary</p>
-          <p class="self-end">Subtotal: $ {{ summary.subtotal.toFixed(2) }}</p>
-          <p class="self-end">Tax ({{ TAX_PERCENTAGE }}%): $ {{ summary.tax.toFixed(2) }}</p>
-          <p class="self-end"><strong>Total: جنيه {{ summary.total.toFixed(2) }}</strong></p>
+          <p class="self-end">الإجمالي الفرعي :{{ summary.subtotal.toFixed(2) }} ر.س  </p>
+          <p class="self-end">الضريبة ({{ TAX_PERCENTAGE }}%): ر.س  {{ summary.tax.toFixed(2) }}</p>
+          <p class="self-end"><strong>الإجمالي: ر.س {{ summary.total.toFixed(2) }}</strong></p>
         </div>
         <div v-if="isCreditCard">
           <label for="card" class="block text-gray-700">Credit Card</label>
@@ -57,6 +57,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import { useOrderStore } from "../stores/order";
 import { useCartStore } from "../stores/cart";
 import { mapState, mapActions } from "pinia";
+import { TAX_PERCENTAGE } from "../config";
 
 export default {
   data() {
@@ -82,7 +83,7 @@ export default {
 
   },
   async mounted() {
-    this.stripe = await loadStripe("pk_test_51QPCm1Li27LSE7TsegbiJ5AgVhLK55jSTsDWzb2oUMOdkIFj14tEFYRX8KxPWUMno6vfXv2L4kVrEszgNBfnok8t00u8lEL6Bt");
+    this.stripe = await loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
     this.card = this.stripe.elements().create("card");
     this.card.mount("#card-element");
   },

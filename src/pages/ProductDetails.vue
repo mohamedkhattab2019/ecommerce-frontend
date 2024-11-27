@@ -34,7 +34,7 @@
                     غير متاح بالمخزن
                 </p>
 
-                <div class="flex gap-4 mt-6">
+                <div v-if="product.quantity>0" class="flex gap-4 mt-6">
                     <button @click="handleAddToCart(product.id)"
                         class="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600 focus:ring-4 focus:ring-blue-200"
                         :disabled="product.quantity === 0">
@@ -113,7 +113,7 @@ export default {
 
         async buyNow() {
             try {
-                await this.addToCart(this.product.id, 1)
+                await this.addToCart(this.product.id)
                 this.$router.push("/cart");
             } catch (error) {
                 console.error("Failed to add to cart:", error);

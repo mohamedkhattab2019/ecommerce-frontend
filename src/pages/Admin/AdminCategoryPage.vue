@@ -1,13 +1,13 @@
 <template>
   <div class="container mx-auto p-6">
-    <h1 class="text-2xl font-bold mb-4">Manage Categories</h1>
+    <h1 class="text-2xl font-bold mb-4">إدارة التصنيفات</h1>
 
     <!-- Add Category Button -->
     <button
       @click="openCategoryModal(null)"
       class="bg-blue-500 text-white px-4 py-2 mb-4 rounded hover:bg-blue-600"
     >
-      Add Category
+     اضافة تصنيف
     </button>
 
     <!-- Categories Table -->
@@ -24,25 +24,26 @@
         <tr
           v-for="category in categories"
           :key="category.id"
-          class="hover:bg-gray-50 cursor-pointer"
+          class="hover:bg-tertiary cursor-pointer"
           @click="navigateToProducts(category)"
+          title="اضغط لرؤية او اضافة منتجات في هذا التصنيف!"
 
         >
-          <td class="p-4 border border-gray-200 text-white">{{ category.id }}</td>
-          <td class="p-4 border border-gray-200 text-white">{{ category.name_ar }}</td>
-          <td class="p-4 border border-gray-200 text-white">{{ category.name_en }}</td>
-          <td class="p-4 border border-gray-200 text-white">
+          <td class="p-4 border border-gray-200 text-white ">{{ category.id }}</td>
+          <td class="p-4 border border-gray-200 text-white ">{{ category.name_ar }}</td>
+          <td class="p-4 border border-gray-200 text-white ">{{ category.name_en }}</td>
+          <td class="p-4 border border-gray-200 text-white ">
             <button
               @click.stop="openCategoryModal(category)"
               class="bg-yellow-500 text-white px-2 py-1 rounded hover:bg-yellow-600 mr-2"
             >
-              Edit
+              تعديل
             </button>
             <button
               @click.stop="deleteCategory(category.id)"
               class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600"
             >
-              Delete
+              مسح
             </button>
           </td>
         </tr>
