@@ -48,13 +48,13 @@
         </div>
         <div class="flex-1 flex  ml-4 gap-6 text-tertiary">
 
-          <p class="font-bold">جنيه{{ item.productPrice }}</p>
+          <p class="font-bold">ر.س{{ item.productPrice }}</p>
         </div>
       </div>
       <div class="my-8">
         <h2 class="text-xl font-bold text-tertiary text-left flex">
           <span class="my-4">
-            جنيه
+            ر.س
           </span>
           <span class="my-4">
 
