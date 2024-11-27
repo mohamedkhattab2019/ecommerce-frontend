@@ -9,6 +9,7 @@ import AdminCategoryPage from "../pages/Admin/AdminCategoryPage.vue";
 import AdminProductsPage from "../pages/Admin/AdminProductsPage.vue";
 import OrderFailure from "../pages/OrderFailure.vue";
 import ProductDetails from "../pages/ProductDetails.vue";
+import UserOrders from "../pages/UserOrders.vue";
 
 const routes = [
   {
@@ -53,6 +54,8 @@ const routes = [
       { path: '/checkout', name: 'Checkout', component: Checkout },
       { path: '/order-confirmation/:orderId', name: 'OrderConfirmation', component: OrderConfirmation, props: true },
       { path: '/order-failure', name: 'OrderFailure', component: OrderFailure },
+      { path: '/orders', name: 'UserOrders', component: UserOrders },
+
 
 
     ],
